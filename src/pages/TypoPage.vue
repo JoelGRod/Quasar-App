@@ -27,9 +27,9 @@
     <span class="text-weight-bolder text-center q-pa-xs">Lorem ipsum dolor sit amet consectetur adipisicing elit.</span>
 
     <q-btn 
-      @click="toggleSidenavMenu"
+      @click="toggleSidenavOpen"
       color="primary" 
-      label="open sidenav menu" 
+      :label="isSidenavOpen ? 'Close Menu' : 'Open Menu'" 
       class="q-mt-md">
     </q-btn>
 
@@ -38,19 +38,18 @@
 
 <script>
 import { defineComponent } from 'vue';
-import { useStore } from "vuex";
+import useUi from "../composables/useUi";
 
 export default defineComponent({
   name: 'TypoPage',
 
   setup() {
 
-    const store = useStore();
+    const { isSidenavOpen, toggleSidenavOpen } = useUi()
 
     return {
-      toggleSidenavMenu: () => {
-        return store.commit('ui/toggleSideMenu')
-      }
+      isSidenavOpen,
+      toggleSidenavOpen
     }
 
   }
