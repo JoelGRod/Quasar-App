@@ -26,13 +26,33 @@
     <span class="text-weight-bold text-center q-pa-xs">Lorem ipsum dolor sit amet consectetur adipisicing elit.</span>
     <span class="text-weight-bolder text-center q-pa-xs">Lorem ipsum dolor sit amet consectetur adipisicing elit.</span>
 
+    <q-btn 
+      @click="toggleSidenavMenu"
+      color="primary" 
+      label="open sidenav menu" 
+      class="q-mt-md">
+    </q-btn>
+
   </q-page>
 </template>
 
 <script>
 import { defineComponent } from 'vue';
+import { useStore } from "vuex";
 
 export default defineComponent({
-  name: 'TypoPage'
+  name: 'TypoPage',
+
+  setup() {
+
+    const store = useStore();
+
+    return {
+      toggleSidenavMenu: () => {
+        return store.commit('ui/toggleSideMenu')
+      }
+    }
+
+  }
 })
 </script>
