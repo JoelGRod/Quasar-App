@@ -30,7 +30,8 @@
           lazy-rules
           :rules="[
             (val) => (val && val.length > 0) || 'This field is required',
-            (val) => (val.length >= 6) || 'The password must be 6 characters long',
+            (val) =>
+              val.length >= 6 || 'The password must be 6 characters long',
           ]"
         />
 
@@ -43,16 +44,18 @@
           lazy-rules
           :rules="[
             (val) => (val && val.length > 0) || 'This field is required',
-            isSamePassword
-          ]" 
+            isSamePassword,
+          ]"
         />
 
         <q-checkbox
           v-model="userForm.conditions"
           label="Terms and Conditions"
-          :style="userForm.errorInConditions && !userForm.conditions 
-          ? 'color: red' 
-          : 'color: black'"
+          :style="
+            userForm.errorInConditions && !userForm.conditions
+              ? 'color: red'
+              : 'color: black'
+          "
         />
 
         <div class="row justify-end">
@@ -94,7 +97,12 @@ export default defineComponent({
       userForm,
       // Public methods
       onSubmit: () => {
-        if( !userForm.value.conditions ) {
+        if (!userForm.value.conditions) {
+          $q.notify({
+            message: "You must accept the terms of use.",
+            color: "purple",
+            icon: 'las la-exclamation-circle'
+          });
           userForm.value.errorInConditions = true;
           return;
         }
@@ -115,8 +123,8 @@ export default defineComponent({
         return emailPattern.test(val) || "Not a valid Email";
       },
       isSamePassword: (val) => {
-        return ( val === userForm.value.password || 'Passwords do not match' )
-      }
+        return val === userForm.value.password || "Passwords do not match";
+      },
     };
   },
 });
