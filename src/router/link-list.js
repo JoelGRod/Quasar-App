@@ -23,6 +23,12 @@ const linksList = [
     icon: "las la-dog",
     link: "Dialogs",
   },
+  {
+    title: "Forms",
+    caption: "Forms Examples, Input, Validations ...",
+    icon: "lab la-wpforms",
+    link: "Forms",
+  },
 ];
 
 export default linksList;
