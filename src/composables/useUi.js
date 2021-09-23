@@ -5,14 +5,24 @@ const useUi = () => {
 
     const store = useStore();
 
+    const toggleSidenavOpen = () => {
+        store.commit('ui/toggleSideMenu')
+    }
+
     return {
         // Side Menu Options
-        isSidenavOpen: computed( 
-            () => store.getters['ui/getIsSidenavOpen'] 
-        ),
-        toggleSidenavOpen() {
-            store.commit('ui/toggleSideMenu')
-        },
+        // isSidenavOpen: computed( 
+        //     () => store.getters['ui/getIsSidenavOpen'] 
+        // ),
+        isSidenavOpen: computed({
+            get() {
+                return store.getters['ui/getIsSidenavOpen'];
+            },
+            set( value ) {
+                toggleSidenavOpen();
+            }
+        }),
+        toggleSidenavOpen,
     }
 }
 
