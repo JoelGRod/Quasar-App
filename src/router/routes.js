@@ -18,6 +18,11 @@ const routes = [
         name: 'Flex',
         component: () => import('pages/flex.vue') 
       },
+      { 
+        path: 'dialogs',
+        name: 'Dialogs',
+        component: () => import('pages/Dialogs.vue') 
+      },
     ]
   },
 

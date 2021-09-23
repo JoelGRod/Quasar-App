@@ -7,15 +7,21 @@ const linksList = [
   },
   {
     title: "Typography",
-    caption: "quasar fonts",
+    caption: "Quasar Fonts",
     icon: "las la-font",
     link: "Typo",
   },
   {
     title: "Flex Layout",
-    caption: "flex examples",
+    caption: "Flex Examples",
     icon: "las la-cat",
     link: "Flex",
+  },
+  {
+    title: "Dialogs",
+    caption: "Dialogs, Alerts and Confirmations",
+    icon: "las la-dog",
+    link: "Dialogs",
   },
 ];
 
